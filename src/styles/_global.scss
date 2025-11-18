@@ -1,0 +1,60 @@
+@forward "./palette";
+@forward "./variables";
+
+.container {
+    display: flex;
+
+    // flex direction
+    &.row {
+        flex-direction: row;
+    }
+    &.col {
+        flex-direction: column;
+    }
+
+    // justify-content
+    &.jc-center {
+        justify-content: center;
+    }
+    &.jc-fx-start {
+        justify-content: flex-start;
+    }
+    &.jc-fx-end {
+        justify-content: flex-end;
+    }
+    &.jc-baseline {
+        justify-content: baseline;
+    }
+    &.jc-spacearound {
+        justify-content: space-around;
+    }
+    &.jc-spacebetween {
+        justify-content: space-between;
+    }
+    &.jc-spaceevenly {
+        justify-content: space-evenly;
+    }
+
+    // justify-content
+    &.ai-center {
+        align-items: center;
+    }
+    &.ai-fx-start {
+        align-items: flex-start;
+    }
+    &.ai-fx-end {
+        align-items: flex-end;
+    }
+    &.ai-baseline {
+        align-items: baseline;
+    }
+    &.ai-spacearound {
+        align-items: space-around;
+    }
+    &.ai-spacebetween {
+        align-items: space-between;
+    }
+    &.ai-spaceevenly {
+        align-items: space-evenly;
+    }
+}

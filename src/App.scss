@@ -1,0 +1,70 @@
+@use "./styles/_global.scss" as *;
+@use "sass:color";
+
+.header-div {
+    padding: 3.4em 0em;
+    background-color: $card-color;
+}
+
+.navbar-div {
+    top: 0;
+    position: sticky;
+    height: 70px;
+    background-color: $navbar-color;
+
+    .nav-link {
+        height: 100%;
+        width: 8em;
+
+        .nav-button {
+            height: 100%;
+            width: 100%;
+
+            cursor: pointer;
+
+            background-color: inherit;
+            border: none;
+            color: $base-text-color;
+            font-size: $navbar-text-size;
+
+            &:hover {
+                background-color: color.adjust($navbar-color, $blackness: 50%);
+            }
+        }
+    }
+}
+
+.card-div {
+    background-color: $card-color;
+}
+
+.home-div {
+    min-height: 120vh;
+
+    .about-game {
+        min-height: 500px;
+        border: 1px solid red;
+
+        h1 {
+            padding: 1.6em 4em 1em 4em;
+        }
+
+        .card-grid {
+            border: 1px solid red;
+
+            .card-div {
+                margin: 0em 3em;
+            }
+        }
+    }
+}
+
+@media (max-width: 1500px) {
+    .card-grid {
+        flex-direction: column !important;
+
+        .card-div {
+            margin: 1em 0em !important;
+        }
+    }
+}
