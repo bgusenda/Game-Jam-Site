@@ -23,32 +23,32 @@ export const teamMembersData = [
     },
     {
         name: "Mikael Henryque",
-        role: "aaa"
+        role: "Efeitos Visuais"
     },
     {
         name: "Mirella Luna",
-        role: "aaa"
+        role: "Arte e Animações"
     },
     {
         name: "João Pedro",
-        role: "aaa"
+        role: "Triha Sonora"
     },
     {
         name: "Josué Júnior",
-        role: "aaa"
+        role: "Trilha Sonora"
     },
     {
         name: "Yujima",
-        role: "Game dev"
+        role: "Auxiliar de Programação e Diretor de Arte"
     },
     {
         name: "Hectares",
         number: 7,
-        role: "Game dev"
+        role: "Programação"
     },
     {
         name: "Miguel Hiper Maneiro",
-        role: "Game dev"
+        role: "Programação e Level Design"
     },
     {
         name: "LPM",

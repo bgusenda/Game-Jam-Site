@@ -39,18 +39,18 @@
 
 .card-div {
     background-color: rgba($card-color, $alpha: .28);
-    box-shadow: 0 0 7px 2px rgba(255,255,255,.7);
+    box-shadow: 0 0 7px 2px rgba(255, 255, 255, .7);
     border-radius: 10px;
     padding: 3em 0;
     position: relative;
     transform-style: preserve-3d;
-    border: 2px solid rgba(255,255,255,.6);
-    outline: 3px solid rgba(255,255,255,.15);
+    border: 2px solid rgba(255, 255, 255, .6);
+    outline: 3px solid rgba(255, 255, 255, .15);
     backdrop-filter: blur(6px) saturate(140%);
     isolation: isolate;
     will-change: transform, box-shadow;
     animation: floatCard 8s ease-in-out infinite;
-    transition: transform .35s cubic-bezier(.25,.8,.25,1), box-shadow .4s, filter .4s;
+    transition: transform .35s cubic-bezier(.25, .8, .25, 1), box-shadow .4s, filter .4s;
 
     &::before {
         content: "";
@@ -58,7 +58,7 @@
         inset: 0;
         border-radius: inherit;
         padding: 2px;
-        background: linear-gradient(145deg, rgba(0,255,255,.5), rgba(255,0,150,.5));
+        background: linear-gradient(145deg, rgba(0, 255, 255, .5), rgba(255, 0, 150, .5));
         mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
         -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
         -webkit-mask-composite: xor;
@@ -75,7 +75,7 @@
         position: absolute;
         inset: -16px;
         border-radius: 18px;
-        background: radial-gradient(circle at 50% 50%, rgba(0,255,170,.25) 0, transparent 70%);
+        background: radial-gradient(circle at 50% 50%, rgba(0, 255, 170, .25) 0, transparent 70%);
         opacity: 0;
         transition: opacity .4s;
         pointer-events: none;
@@ -84,8 +84,11 @@
 
     &:hover {
         filter: brightness(1.15) saturate(1.3);
-        box-shadow: 0 0 10px 3px rgba(255,255,255,.9), 0 0 24px 8px rgba(0,255,255,.5), 0 0 40px 14px rgba(255,0,150,.4);
-        &::after { opacity: 1; }
+        box-shadow: 0 0 10px 3px rgba(255, 255, 255, .9), 0 0 24px 8px rgba(0, 255, 255, .5), 0 0 40px 14px rgba(255, 0, 150, .4);
+
+        &::after {
+            opacity: 1;
+        }
     }
 }
 
@@ -100,13 +103,20 @@ h1 {
     min-height: 120vh;
     padding: 3em 0;
 
-    .logo {
-        img {
-            border: 1px solid white;
-            width: 600px;
-            height: 140px;
+    .game-title {
+        padding: 1em 0;
+        font-size: 190%;
+        animation: floatGameTitle 3s linear infinite;
 
-            text-align: center;
+        h1 {
+            padding: 0;
+            letter-spacing: -2px;
+            font-family: "Jersey 20";
+        }
+
+        h2 {
+            font-weight: lighter;
+            font-family: "Jersey 20";
         }
     }
 
@@ -149,15 +159,16 @@ h1 {
     }
 
     .team-members {
-
+        
         .grid {
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 40%;
+            width: 70%;
 
             p {
                 padding-left: 0.5em;
+                margin-right: -.3em;
                 font-size: 2em;
                 text-transform: capitalize;
                 font-family: "Pixelify Sans";
@@ -167,26 +178,40 @@ h1 {
                     font-size: 0.75em;
                 }
 
-                &.name {
-                    text-transform: uppercase;
+                &.miguel:hover {
+                    &::after {
+                        position: absolute;
+                        left: 0;
+                        padding: 0 3em;
+                        text-decoration: none !important;
+                        background-color: black;
+                        content: "Nada";
+                    }
                 }
 
-                &.role::after {
-                    content: "...........................";
+                &.name {
+                    margin-left: -0.7em;
+                    text-transform: uppercase;
                 }
             }
 
             .team-member {
                 width: 100%;
                 position: relative;
-                opacity: 0;
                 transform: translateY(40px) scale(.95);
-                filter: brightness(.6) saturate(.6);
-                will-change: transform, opacity, filter;
                 transition: filter .4s;
+                display: flex;
+                align-items: center;
+                gap: 1em;
+
+                .dots {
+                    flex: 1;
+                    border-bottom: 4px dotted white;
+                    padding-top: 1em;
+                }
 
                 &.reveal {
-                    animation: memberIn .75s cubic-bezier(.22,.82,.25,1) forwards;
+                    animation: memberIn 1s cubic-bezier(.22, .82, .25, 1) forwards;
                     animation-delay: calc(var(--i) * 120ms);
                 }
 
@@ -199,7 +224,7 @@ h1 {
                     height: 8px;
                     border-radius: 50%;
                     background: radial-gradient(circle at 30% 30%, #0ff, #0066ff);
-                    box-shadow: 0 0 8px 2px rgba(0,255,255,.7), 0 0 18px 6px rgba(0,140,255,.4);
+                    box-shadow: 0 0 8px 2px rgba(0, 255, 255, .7), 0 0 18px 6px rgba(0, 140, 255, .4);
                     transform: translateY(-50%) scale(0);
                     animation: pulseNode 2.8s ease-in-out infinite;
                     animation-delay: calc(var(--i) * 150ms);
@@ -215,7 +240,8 @@ h1 {
     .lets-play {
         padding: 6em 0;
 
-        button, .magnetic-btn {
+        button,
+        .magnetic-btn {
             cursor: pointer;
             display: flex;
             justify-content: center;
@@ -227,19 +253,17 @@ h1 {
             padding: 2em 0;
             font-size: 3em;
             position: relative;
-            background: repeating-linear-gradient(
-                45deg,
-                #ff0000 0 32px,
-                #ff7f00 32px 64px,
-                #ffff00 64px 96px,
-                #00ff00 96px 128px,
-                #0000ff 128px 160px,
-                #8b00ff 160px 192px
-            );
+            background: repeating-linear-gradient(45deg,
+                    #ff0000 0 32px,
+                    #ff7f00 32px 64px,
+                    #ffff00 64px 96px,
+                    #00ff00 96px 128px,
+                    #0000ff 128px 160px,
+                    #8b00ff 160px 192px);
             background-size: 300% 300%;
             color: white;
             border: 4px solid #ff006c;
-            box-shadow: 0 0 0 4px #000, 0 0 12px 4px rgba(255,0,150,.6);
+            box-shadow: 0 0 0 4px #000, 0 0 12px 4px rgba(255, 0, 150, .6);
             image-rendering: pixelated;
             font-weight: 700;
             letter-spacing: 2px;
@@ -250,61 +274,206 @@ h1 {
             will-change: transform;
 
             &:hover {
-                animation: rainbow-scroll 2s linear infinite, unstableText 1s ease-in-out infinite, jitter 0.35s steps(3,end) infinite;
-                box-shadow: 0 0 0 4px #000, 0 0 18px 6px rgba(255,255,255,.9), 0 0 32px 12px rgba(255,0,150,.8);
+                animation: rainbow-scroll 2s linear infinite, unstableText 1s ease-in-out infinite, jitter 0.35s steps(3, end) infinite;
+                box-shadow: 0 0 0 4px #000, 0 0 18px 6px rgba(255, 255, 255, .9), 0 0 32px 12px rgba(255, 0, 150, .8);
             }
         }
     }
 }
 
+@keyframes floatGameTitle {
+    0% {
+        transform:
+            translateY(0) scaleX(1) scaleY(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+        filter: drop-shadow(0 0 8px rgba(0, 255, 255, 0.4));
+    }
+
+    20% {
+        transform:
+            translateY(-28px) scaleX(1.18) scaleY(0.86) rotateX(14deg) rotateY(32deg) rotateZ(-6deg);
+        filter: drop-shadow(0 12px 22px rgba(0, 255, 255, 0.65));
+    }
+
+    40% {
+        transform:
+            translateY(-10px) scaleX(0.88) scaleY(1.14) rotateX(22deg) rotateY(-24deg) rotateZ(4deg);
+        filter: drop-shadow(0 18px 28px rgba(0, 180, 255, 0.7));
+    }
+
+    60% {
+        transform:
+            translateY(-35px) scaleX(1.22) scaleY(0.82) rotateX(10deg) rotateY(40deg) rotateZ(-8deg);
+        filter: drop-shadow(0 14px 26px rgba(0, 255, 255, 0.75));
+    }
+
+    80% {
+        transform:
+            translateY(-18px) scaleX(0.92) scaleY(1.10) rotateX(18deg) rotateY(-18deg) rotateZ(5deg);
+        filter: drop-shadow(0 16px 20px rgba(0, 220, 255, 0.6));
+    }
+
+    100% {
+        transform:
+            translateY(0) scaleX(1) scaleY(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+        filter: drop-shadow(0 0 8px rgba(0, 255, 255, 0.4));
+    }
+}
+
+@keyframes floatTitle {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
 @keyframes floatCard {
-    0%,100% { transform: translateY(0) rotateX(0deg) rotateY(0deg); }
-    50% { transform: translateY(-12px) rotateX(1deg) rotateY(-1deg); }
+
+    0%,
+    100% {
+        transform: translateY(0) rotateX(0deg) rotateY(0deg);
+    }
+
+    50% {
+        transform: translateY(-12px) rotateX(1deg) rotateY(-1deg);
+    }
 }
 
 @keyframes shineMove {
-    0% { opacity:.4; filter: hue-rotate(0deg); }
-    50% { opacity:.9; filter: hue-rotate(160deg); }
-    100% { opacity:.4; filter: hue-rotate(360deg); }
+    0% {
+        opacity: .4;
+        filter: hue-rotate(0deg);
+    }
+
+    50% {
+        opacity: .9;
+        filter: hue-rotate(160deg);
+    }
+
+    100% {
+        opacity: .4;
+        filter: hue-rotate(360deg);
+    }
 }
 
 @keyframes rainbow-scroll {
-    from { background-position: 0 0; }
-    to { background-position: -200% 200%; }
+    from {
+        background-position: 0 0;
+    }
+
+    to {
+        background-position: -200% 200%;
+    }
 }
 
 @keyframes rainbow-trail {
-    from { background-position: 0 0; opacity: .9; }
-    50% { background-position: -100% 0; opacity: .7; }
-    to { background-position: -200% 0; opacity: .9; }
+    from {
+        background-position: 0 0;
+        opacity: .9;
+    }
+
+    50% {
+        background-position: -100% 0;
+        opacity: .7;
+    }
+
+    to {
+        background-position: -200% 0;
+        opacity: .9;
+    }
 }
 
 @keyframes jitter {
-    0% { transform: translate(0,0) scale(1) rotate(0deg); }
-    20% { transform: translate(-3px,2px) scale(1.03) rotate(-1deg); }
-    40% { transform: translate(2px,-2px) scale(0.98) rotate(1deg); }
-    60% { transform: translate(-2px,1px) scale(1.04) rotate(-2deg); }
-    80% { transform: translate(3px,-3px) scale(0.99) rotate(2deg); }
-    100% { transform: translate(0,0) scale(1) rotate(0deg); }
+    0% {
+        transform: translate(0, 0) scale(1) rotate(0deg);
+    }
+
+    20% {
+        transform: translate(-3px, 2px) scale(1.03) rotate(-1deg);
+    }
+
+    40% {
+        transform: translate(2px, -2px) scale(0.98) rotate(1deg);
+    }
+
+    60% {
+        transform: translate(-2px, 1px) scale(1.04) rotate(-2deg);
+    }
+
+    80% {
+        transform: translate(3px, -3px) scale(0.99) rotate(2deg);
+    }
+
+    100% {
+        transform: translate(0, 0) scale(1) rotate(0deg);
+    }
 }
 
 @keyframes unstableText {
-    0% { letter-spacing: 2px; filter: hue-rotate(0deg); }
-    25% { letter-spacing: 4px; transform: scale(1.04); filter: hue-rotate(40deg); }
-    50% { letter-spacing: 1px; transform: scale(0.97); filter: hue-rotate(120deg); }
-    75% { letter-spacing: 5px; transform: scale(1.06); filter: hue-rotate(260deg); }
-    100% { letter-spacing: 2px; transform: scale(1); filter: hue-rotate(360deg); }
+    0% {
+        letter-spacing: 2px;
+        filter: hue-rotate(0deg);
+    }
+
+    25% {
+        letter-spacing: 4px;
+        transform: scale(1.04);
+        filter: hue-rotate(40deg);
+    }
+
+    50% {
+        letter-spacing: 1px;
+        transform: scale(0.97);
+        filter: hue-rotate(120deg);
+    }
+
+    75% {
+        letter-spacing: 5px;
+        transform: scale(1.06);
+        filter: hue-rotate(260deg);
+    }
+
+    100% {
+        letter-spacing: 2px;
+        transform: scale(1);
+        filter: hue-rotate(360deg);
+    }
 }
 
 @keyframes memberIn {
-    0% { opacity:0; transform: translateY(40px) scale(.88); filter: brightness(.4) saturate(.5) blur(2px); }
-    60% { opacity:1; transform: translateY(-6px) scale(1.02); filter: brightness(1.2) saturate(1.4); }
-    100% { opacity:1; transform: translateY(0) scale(1); filter: brightness(1) saturate(1) blur(0); }
+    0% {
+        opacity: 0;
+        transform: translateY(40px) scale(.88);
+        filter: brightness(.4) saturate(.5) blur(2px);
+    }
+
+    60% {
+        opacity: 1;
+        transform: translateY(-6px) scale(1.02);
+        filter: brightness(1.2) saturate(1.4);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: brightness(1) saturate(1) blur(0);
+    }
 }
 
 @keyframes pulseNode {
-    0%,100% { transform: translateY(-50%) scale(.7); filter: hue-rotate(0deg); }
-    50% { transform: translateY(-50%) scale(1.2); filter: hue-rotate(200deg); }
+
+    0%,
+    100% {
+        transform: translateY(-50%) scale(.7);
+        filter: hue-rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-50%) scale(1.2);
+        filter: hue-rotate(200deg);
+    }
 }
 
 @media (max-width: 1400px) {
@@ -324,16 +493,12 @@ h1 {
                 p {
                     padding-left: 0.4em;
                     font-size: 3vw;
-
-                    &.role::after {
-                        content: ".........";
-                    }
                 }
             }
         }
     }
 }
- 
+
 @media (max-width: 1100px) {
     h1 {
         font-size: 5.5vw;
@@ -364,10 +529,6 @@ h1 {
                 p {
                     padding: 0;
                     font-size: 160%;
-
-                    &.role::after {
-                        content: ".........";
-                    }
                 }
             }
         }
@@ -376,7 +537,8 @@ h1 {
     .lets-play {
         padding: 3em 0 !important;
 
-        button, .magnetic-btn {
+        button,
+        .magnetic-btn {
             width: 300px !important;
             padding: 2em 3em !important;
             font-size: 2em !important;
@@ -393,10 +555,6 @@ h1 {
                 p {
                     padding: 0;
                     font-size: 4vw;
-
-                    &.role::after {
-                        content: "......";
-                    }
                 }
             }
         }

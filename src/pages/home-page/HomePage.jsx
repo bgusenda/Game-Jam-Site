@@ -34,8 +34,9 @@ export default function HomePage() {
 
     return (
         <div className="home-div">
-            <div className="logo container jc-center ai-center">
-                <img src="" alt="Aliens e Dinossauro: Uma Invasão Muito Maluca" />
+            <div className="game-title container col jc-center ai-center">
+                <h1>Aliens e Dinossauro:</h1>
+                <h2>Uma Invasão Muito Maluca</h2>
             </div>
 
             <div className="about-game container col jc-fx-start ai-center">
@@ -56,9 +57,13 @@ export default function HomePage() {
 
                 <div className="grid container col">
                     {teamMembersData.map((item, idx) => (
-                        <div key={idx} className="team-member container row jc-spacebetween" style={{ '--i': idx }}>
-                            <p className="role">{item.role}</p>
-                            <p className="name">{item.name}<span>{item.number}</span></p>
+                        <div className="team-member container row jc-spacebetween">
+                            <p className={item.name == "Miguel Custodio" ? "role miguel" : "role"}>{item.role}</p>
+                            <div className="dots"></div>
+                            <p className="name">
+                                {item.name}
+                                <span>{item.number}</span>
+                            </p>
                         </div>
                     ))}
                 </div>
