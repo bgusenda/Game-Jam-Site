@@ -35,7 +35,7 @@ export default function HomePage() {
     return (
         <div className="home-div">
             <div className="logo container jc-center ai-center">
-                <img src="" alt="logo do jogo" />
+                <img src="" alt="Aliens e Dinossauro: Uma Invasão Muito Maluca" />
             </div>
 
             <div className="about-game container col jc-fx-start ai-center">
@@ -43,7 +43,7 @@ export default function HomePage() {
 
                 <div className="card-grid container">
                     {aboutGameData.map((item) => (
-                        <Card width={320} height={340} id={item.id}>
+                        <Card width={320} height={300} id={item.id}>
                             <h2>{item.title}</h2>
                             <p>{item.content}</p>
                         </Card>
@@ -58,7 +58,7 @@ export default function HomePage() {
                     {teamMembersData.map((item, idx) => (
                         <div key={idx} className="team-member container row jc-spacebetween" style={{ '--i': idx }}>
                             <p className="role">{item.role}</p>
-                            <p className="name">{item.name}</p>
+                            <p className="name">{item.name}<span>{item.number}</span></p>
                         </div>
                     ))}
                 </div>

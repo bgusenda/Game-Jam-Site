@@ -2,24 +2,24 @@ export const aboutGameData = [
     {
         title: "Temática",
         id: "theme-card",
-        content: "Lorem ipsum"
+        content: "Jogo co-op (dois jogadores) de humor e aventura, com o estilo da jogatina sendo metrodvania e o artístico e humorístico inspirado nos jogos da desenvolvedora The Behemoth (Castle Crashers e Alien Hominid)."
     },
     {
         title: "Plot",
         id: "plot-card",
-        content: "Lorem ipsum"
+        content: "Um alien e um dinossauro se encontram por acaso em uma base lunar e, juntos, decidem tomar a instalação para si mesmos."
     },
     {
         title: "Mecânicas",
         id: "feature-card",
-        content: "Lorem ipsum"
+        content: "Dois personagens distintos com movimentações únicas: o dinossauro utiliza um jetpack para voar e o utiliza como arma, enquanto o alien pode dar pulo duplo e utilzar arma laser ou espada."
     }
 ]
 
 export const teamMembersData = [
     {
         name: "Miguel Custodio",
-        role: "aaa"
+        role: "Auxiliar Geral"
     },
     {
         name: "Mikael Henryque",
@@ -38,23 +38,24 @@ export const teamMembersData = [
         role: "aaa"
     },
     {
-        name: "Gustavo",
-        role: "aaa"
+        name: "Yujima",
+        role: "Game dev"
     },
     {
-        name: "Heitor",
-        role: "aaa"
+        name: "Hectares",
+        number: 7,
+        role: "Game dev"
     },
     {
-        name: "Miguel",
-        role: "aaa"
+        name: "Miguel Hiper Maneiro",
+        role: "Game dev"
     },
     {
-        name: "Lucas Máximo",
-        role: "aaa"
+        name: "LPM",
+        role: "Desenvolvendor do Site"
     },
     {
-        name: "Luz Coelho",
-        role: "aaa"
+        name: "bgusen",
+        role: "Desenvolvendora do Site"
     }
 ]

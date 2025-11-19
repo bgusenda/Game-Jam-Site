@@ -27,7 +27,11 @@
             font-size: $navbar-text-size;
 
             &:hover {
-                background-color: rgba(white, $alpha: .3);
+                background-color: rgba(white, $alpha: .2);
+            }
+
+            &.opened {
+                background-color: rgba(white, $alpha: .35);
             }
         }
     }
@@ -85,6 +89,13 @@
     }
 }
 
+h1 {
+    font-size: 3em;
+    padding: 1.4em 4em 1em 4em;
+    font-family: "Sixtyfour";
+    font-weight: lighter;
+}
+
 .home-div {
     min-height: 120vh;
     padding: 3em 0;
@@ -101,11 +112,6 @@
 
     .about-game {
         min-height: 500px;
-        
-        h1 {
-            font-size: 3em;
-            padding: 1.4em 4em 1em 4em;
-        }
 
         .card-grid {
             perspective: 1100px;
@@ -128,16 +134,21 @@
                     background-color: rgba(rgb(102, 255, 0), $alpha: .3);
                     box-shadow: 0 0 7px 2px greenyellow;
                 }
+
+                h2 {
+                    font-size: 2.8em;
+                }
+
+                p {
+                    padding: 1em 1em;
+                    text-align: justify;
+                    font-size: 1.4em;
+                }
             }
         }
     }
 
     .team-members {
-
-        h1 {
-            font-size: 3em;
-            padding: 1.6em 4em 1em 4em;
-        }
 
         .grid {
             display: flex;
@@ -146,15 +157,22 @@
             width: 40%;
 
             p {
+                padding-left: 0.5em;
                 font-size: 2em;
                 text-transform: capitalize;
+                font-family: "Pixelify Sans";
+
+                span {
+                    font-family: "Sixtyfour";
+                    font-size: 0.75em;
+                }
 
                 &.name {
                     text-transform: uppercase;
                 }
 
                 &.role::after {
-                    content: " ...........................";
+                    content: "...........................";
                 }
             }
 
@@ -289,12 +307,98 @@
     50% { transform: translateY(-50%) scale(1.2); filter: hue-rotate(200deg); }
 }
 
+@media (max-width: 1400px) {
+    .about-game {
+        .card-grid {
+            .card-div {
+                margin: 0em 1em !important;
+            }
+        }
+    }
+
+    .team-members {
+        .grid {
+            width: 90% !important;
+
+            .team-member {
+                p {
+                    padding-left: 0.4em;
+                    font-size: 3vw;
+
+                    &.role::after {
+                        content: ".........";
+                    }
+                }
+            }
+        }
+    }
+}
+ 
 @media (max-width: 1100px) {
+    h1 {
+        font-size: 5.5vw;
+        text-align: center;
+    }
+
     .card-grid {
         flex-direction: column !important;
 
         .card-div {
             margin: 1em 0em !important;
+        }
+    }
+
+    .about-game {
+        .card-grid {
+            .card-div {
+                margin: 1em 0em !important;
+            }
+        }
+    }
+
+    .team-members {
+        .grid {
+            width: 90% !important;
+
+            .team-member {
+                p {
+                    padding: 0;
+                    font-size: 160%;
+
+                    &.role::after {
+                        content: ".........";
+                    }
+                }
+            }
+        }
+    }
+
+    .lets-play {
+        padding: 3em 0 !important;
+
+        button, .magnetic-btn {
+            width: 300px !important;
+            padding: 2em 3em !important;
+            font-size: 2em !important;
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    .team-members {
+        .grid {
+            width: 90% !important;
+
+            .team-member {
+                p {
+                    padding: 0;
+                    font-size: 4vw;
+
+                    &.role::after {
+                        content: "......";
+                    }
+                }
+            }
         }
     }
 }
