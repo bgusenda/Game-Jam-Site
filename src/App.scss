@@ -1,16 +1,15 @@
 @use "./styles/_global.scss" as *;
 @use "sass:color";
 
-.header-div {
-    padding: 3.4em 0em;
-    background-color: $card-color;
-}
-
 .navbar-div {
+    z-index: 2;
     top: 0;
     position: sticky;
     height: 70px;
     background-color: $navbar-color;
+    background-image: url("./assets/navbar-bg.jpg");
+    background-position: 0;
+    box-shadow: 0 0 10px 2px rgb(46, 44, 134);
 
     .nav-link {
         height: 100%;
@@ -28,38 +27,269 @@
             font-size: $navbar-text-size;
 
             &:hover {
-                background-color: color.adjust($navbar-color, $blackness: 50%);
+                background-color: rgba(white, $alpha: .3);
             }
         }
     }
 }
 
 .card-div {
-    background-color: $card-color;
+    background-color: rgba($card-color, $alpha: .28);
+    box-shadow: 0 0 7px 2px rgba(255,255,255,.7);
+    border-radius: 10px;
+    padding: 3em 0;
+    position: relative;
+    transform-style: preserve-3d;
+    border: 2px solid rgba(255,255,255,.6);
+    outline: 3px solid rgba(255,255,255,.15);
+    backdrop-filter: blur(6px) saturate(140%);
+    isolation: isolate;
+    will-change: transform, box-shadow;
+    animation: floatCard 8s ease-in-out infinite;
+    transition: transform .35s cubic-bezier(.25,.8,.25,1), box-shadow .4s, filter .4s;
+
+    &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        padding: 2px;
+        background: linear-gradient(145deg, rgba(0,255,255,.5), rgba(255,0,150,.5));
+        mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+        -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        pointer-events: none;
+        opacity: .65;
+        filter: blur(2px);
+        mix-blend-mode: screen;
+        animation: shineMove 5.5s linear infinite;
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        inset: -16px;
+        border-radius: 18px;
+        background: radial-gradient(circle at 50% 50%, rgba(0,255,170,.25) 0, transparent 70%);
+        opacity: 0;
+        transition: opacity .4s;
+        pointer-events: none;
+        mix-blend-mode: overlay;
+    }
+
+    &:hover {
+        filter: brightness(1.15) saturate(1.3);
+        box-shadow: 0 0 10px 3px rgba(255,255,255,.9), 0 0 24px 8px rgba(0,255,255,.5), 0 0 40px 14px rgba(255,0,150,.4);
+        &::after { opacity: 1; }
+    }
 }
 
 .home-div {
     min-height: 120vh;
+    padding: 3em 0;
+
+    .logo {
+        img {
+            border: 1px solid white;
+            width: 600px;
+            height: 140px;
+
+            text-align: center;
+        }
+    }
 
     .about-game {
         min-height: 500px;
-        border: 1px solid red;
-
+        
         h1 {
-            padding: 1.6em 4em 1em 4em;
+            font-size: 3em;
+            padding: 1.4em 4em 1em 4em;
         }
 
         .card-grid {
-            border: 1px solid red;
+            perspective: 1100px;
+            transform-style: preserve-3d;
 
             .card-div {
                 margin: 0em 3em;
+
+                &#theme-card {
+                    background-color: rgba(rgb(255, 19, 19), $alpha: .3);
+                    box-shadow: 0 0 7px 2px red;
+                }
+
+                &#plot-card {
+                    background-color: rgba(rgb(255, 238, 0), $alpha: .3);
+                    box-shadow: 0 0 7px 2px yellow;
+                }
+
+                &#feature-card {
+                    background-color: rgba(rgb(102, 255, 0), $alpha: .3);
+                    box-shadow: 0 0 7px 2px greenyellow;
+                }
+            }
+        }
+    }
+
+    .team-members {
+
+        h1 {
+            font-size: 3em;
+            padding: 1.6em 4em 1em 4em;
+        }
+
+        .grid {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40%;
+
+            p {
+                font-size: 2em;
+                text-transform: capitalize;
+
+                &.name {
+                    text-transform: uppercase;
+                }
+
+                &.role::after {
+                    content: " ...........................";
+                }
+            }
+
+            .team-member {
+                width: 100%;
+                position: relative;
+                opacity: 0;
+                transform: translateY(40px) scale(.95);
+                filter: brightness(.6) saturate(.6);
+                will-change: transform, opacity, filter;
+                transition: filter .4s;
+
+                &.reveal {
+                    animation: memberIn .75s cubic-bezier(.22,.82,.25,1) forwards;
+                    animation-delay: calc(var(--i) * 120ms);
+                }
+
+                &::before {
+                    content: "";
+                    position: absolute;
+                    left: -12px;
+                    top: 50%;
+                    width: 8px;
+                    height: 8px;
+                    border-radius: 50%;
+                    background: radial-gradient(circle at 30% 30%, #0ff, #0066ff);
+                    box-shadow: 0 0 8px 2px rgba(0,255,255,.7), 0 0 18px 6px rgba(0,140,255,.4);
+                    transform: translateY(-50%) scale(0);
+                    animation: pulseNode 2.8s ease-in-out infinite;
+                    animation-delay: calc(var(--i) * 150ms);
+                }
+
+                &:hover {
+                    filter: brightness(1.15) saturate(1.3);
+                }
+            }
+        }
+    }
+
+    .lets-play {
+        padding: 6em 0;
+
+        button, .magnetic-btn {
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            height: 20px;
+            width: 600px;
+
+            padding: 2em 0;
+            font-size: 3em;
+            position: relative;
+            background: repeating-linear-gradient(
+                45deg,
+                #ff0000 0 32px,
+                #ff7f00 32px 64px,
+                #ffff00 64px 96px,
+                #00ff00 96px 128px,
+                #0000ff 128px 160px,
+                #8b00ff 160px 192px
+            );
+            background-size: 300% 300%;
+            color: white;
+            border: 4px solid #ff006c;
+            box-shadow: 0 0 0 4px #000, 0 0 12px 4px rgba(255,0,150,.6);
+            image-rendering: pixelated;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            animation: rainbow-scroll 7s linear infinite;
+            transition: transform .15s ease-out;
+            overflow: visible;
+            will-change: transform;
+
+            &:hover {
+                animation: rainbow-scroll 2s linear infinite, unstableText 1s ease-in-out infinite, jitter 0.35s steps(3,end) infinite;
+                box-shadow: 0 0 0 4px #000, 0 0 18px 6px rgba(255,255,255,.9), 0 0 32px 12px rgba(255,0,150,.8);
             }
         }
     }
 }
 
-@media (max-width: 1500px) {
+@keyframes floatCard {
+    0%,100% { transform: translateY(0) rotateX(0deg) rotateY(0deg); }
+    50% { transform: translateY(-12px) rotateX(1deg) rotateY(-1deg); }
+}
+
+@keyframes shineMove {
+    0% { opacity:.4; filter: hue-rotate(0deg); }
+    50% { opacity:.9; filter: hue-rotate(160deg); }
+    100% { opacity:.4; filter: hue-rotate(360deg); }
+}
+
+@keyframes rainbow-scroll {
+    from { background-position: 0 0; }
+    to { background-position: -200% 200%; }
+}
+
+@keyframes rainbow-trail {
+    from { background-position: 0 0; opacity: .9; }
+    50% { background-position: -100% 0; opacity: .7; }
+    to { background-position: -200% 0; opacity: .9; }
+}
+
+@keyframes jitter {
+    0% { transform: translate(0,0) scale(1) rotate(0deg); }
+    20% { transform: translate(-3px,2px) scale(1.03) rotate(-1deg); }
+    40% { transform: translate(2px,-2px) scale(0.98) rotate(1deg); }
+    60% { transform: translate(-2px,1px) scale(1.04) rotate(-2deg); }
+    80% { transform: translate(3px,-3px) scale(0.99) rotate(2deg); }
+    100% { transform: translate(0,0) scale(1) rotate(0deg); }
+}
+
+@keyframes unstableText {
+    0% { letter-spacing: 2px; filter: hue-rotate(0deg); }
+    25% { letter-spacing: 4px; transform: scale(1.04); filter: hue-rotate(40deg); }
+    50% { letter-spacing: 1px; transform: scale(0.97); filter: hue-rotate(120deg); }
+    75% { letter-spacing: 5px; transform: scale(1.06); filter: hue-rotate(260deg); }
+    100% { letter-spacing: 2px; transform: scale(1); filter: hue-rotate(360deg); }
+}
+
+@keyframes memberIn {
+    0% { opacity:0; transform: translateY(40px) scale(.88); filter: brightness(.4) saturate(.5) blur(2px); }
+    60% { opacity:1; transform: translateY(-6px) scale(1.02); filter: brightness(1.2) saturate(1.4); }
+    100% { opacity:1; transform: translateY(0) scale(1); filter: brightness(1) saturate(1) blur(0); }
+}
+
+@keyframes pulseNode {
+    0%,100% { transform: translateY(-50%) scale(.7); filter: hue-rotate(0deg); }
+    50% { transform: translateY(-50%) scale(1.2); filter: hue-rotate(200deg); }
+}
+
+@media (max-width: 1100px) {
     .card-grid {
         flex-direction: column !important;
 
