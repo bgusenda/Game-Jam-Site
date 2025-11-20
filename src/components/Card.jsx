@@ -1,6 +1,6 @@
 import { useRef, useEffect } from "react";
 
-export function Card({ width, height, id, children }) {
+export const Card = ({ width, height, id, children }) => {
     const ref = useRef(null);
     const motionAllowed = typeof window !== 'undefined' && !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 

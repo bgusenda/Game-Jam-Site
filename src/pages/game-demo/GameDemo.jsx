@@ -1,6 +1,8 @@
+import Magnet from "../../components/Magnet"
+
 export default function GameDemoPage() {
     return (
-        <div className="container jc-center ai-center" style={{ padding: "6em 0"}}>
+        <div className="container col jc-center ai-center" style={{ padding: "6em 0" }}>
             <iframe
                 src="/games/index.html"
                 width="800"

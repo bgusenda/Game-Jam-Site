@@ -1,7 +1,10 @@
-// Componentes
-import { Card } from "../../components/macomponents"
-import MagneticButton from "../../components/MagneticButton"
+// React
 import { useEffect, useRef } from "react"
+import { useNavigate } from "react-router-dom"
+
+// Componentes
+import { Card } from "../../components/Card"
+import Magnet from "../../components/Magnet"
 
 // Data
 import { aboutGameData, teamMembersData } from "./homepgData"
@@ -9,6 +12,12 @@ import { aboutGameData, teamMembersData } from "./homepgData"
 export default function HomePage() {
     const teamRef = useRef(null)
     const motionAllowed = typeof window !== 'undefined' && !window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+    const navigate = useNavigate()
+
+    const handleNavigateClick = (path) => {
+        navigate(path)
+    }
 
     useEffect(() => {
         if (!motionAllowed) return
@@ -70,9 +79,9 @@ export default function HomePage() {
             </div>
 
             <div className="lets-play container jc-center ai-center">
-                <MagneticButton threshold={240} strength={0.4}>
+                <Magnet padding={400} disabled={false} magnetStrength={5} onClick={() => handleNavigateClick("/game-demo")}>
                     <p>pronto para jogar?</p>
-                </MagneticButton>
+                </Magnet>
             </div>
         </div>
     )
