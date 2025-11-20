@@ -37,6 +37,14 @@
     }
 }
 
+.footer-div {
+    background-color: red;
+    height: 140px;
+    background-image: url("./assets/bg2.jpg");
+    background-repeat: repeat;
+
+}
+
 .card-div {
     background-color: rgba($card-color, $alpha: .28);
     box-shadow: 0 0 7px 2px rgba(255, 255, 255, .7);
@@ -100,8 +108,7 @@ h1 {
 }
 
 .home-div {
-    min-height: 120vh;
-    padding: 3em 0;
+    padding: 2em 0;
 
     .game-title {
         padding: 1em 0;
@@ -239,7 +246,7 @@ h1 {
     }
 
     .lets-play {
-        padding: 6em 0;
+        padding: 3em 0;
 
         button,
         .magnetic-btn {
@@ -282,6 +289,9 @@ h1 {
     }
 }
 
+.game-demo-div {
+}
+
 @keyframes floatGameTitle {
     0% {
         transform:
@@ -321,7 +331,9 @@ h1 {
 }
 
 @keyframes floatTitle {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: translateY(0);
     }
 
