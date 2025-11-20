@@ -12,7 +12,7 @@ export const aboutGameData = [
     {
         title: "Mecânicas",
         id: "feature-card",
-        content: "Dois personagens distintos com movimentações únicas: o dinossauro utiliza um jetpack para voar e o utiliza como arma, enquanto o alien pode dar pulo duplo e utilzar arma laser ou espada."
+        content: "Dois personagens distintos com movimentações únicas: o dinossauro utiliza um jetpack para dar pulo duplo e o utiliza como arma, enquanto o alien pode dar um dash e utilzar uma espada."
     }
 ]
 
